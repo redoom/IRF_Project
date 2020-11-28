@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="df10ef5385d147819a194fd39675df81" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="Database1Model.Coach" Width="1.5" PointX="4.625" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.Competition" Width="1.5" PointX="7.5" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.Competition_Couple" Width="2" PointX="9.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.Competitor" Width="1.5" PointX="1.875" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.Country" Width="1.5" PointX="2" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.Couple" Width="1.5" PointX="6.625" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.Judge" Width="1.5" PointX="4.75" PointY="8.75" IsExpanded="true" />
+        <AssociationConnector Association="Database1Model.FK_Couple_ToCoach" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK_Competition_ToCountry" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK_Competition_ToJudge1" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK_Competition_ToJudge2" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK_Competition_ToJudge3" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK_Competition_ToJudge4" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK_Competition_ToJudge5" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK_SeasonEvent_ToCompetition" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK_SeasonEvent_ToCouple" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK_Competitor_ToCountry" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK_Couple_ToCompetitor1" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK_Couple_ToCompetitor2" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK_Couple_ToCountry" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK_Judge_ToCountry" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

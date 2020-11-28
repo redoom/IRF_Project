@@ -1,0 +1,753 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Database1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Coach">
+          <Key>
+            <PropertyRef Name="CoachID" />
+          </Key>
+          <Property Name="CoachID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="60" />
+          <Property Name="Age" Type="int" />
+        </EntityType>
+        <EntityType Name="Competition">
+          <Key>
+            <PropertyRef Name="CompetitionID" />
+          </Key>
+          <Property Name="CompetitionID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="60" />
+          <Property Name="Type" Type="nvarchar" MaxLength="20" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="CountryFK" Type="int" />
+          <Property Name="JudgeFK1" Type="int" />
+          <Property Name="JudgeFK2" Type="int" />
+          <Property Name="JudgeFK3" Type="int" />
+          <Property Name="JudgeFK4" Type="int" />
+          <Property Name="JudgeFK5" Type="int" />
+        </EntityType>
+        <EntityType Name="Competition_Couple">
+          <Key>
+            <PropertyRef Name="SeasonEventSK" />
+          </Key>
+          <Property Name="SeasonEventSK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CoupleFK" Type="int" />
+          <Property Name="CompetitionFK" Type="int" />
+          <Property Name="Rank" Type="int" />
+        </EntityType>
+        <EntityType Name="Competitor">
+          <Key>
+            <PropertyRef Name="CompetitorID" />
+          </Key>
+          <Property Name="CompetitorID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="60" />
+          <Property Name="Age" Type="int" />
+          <Property Name="Gender" Type="char" MaxLength="1" />
+          <Property Name="Height" Type="int" />
+          <Property Name="CountryFK" Type="int" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="60" />
+          <Property Name="Code" Type="char" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="Couple">
+          <Key>
+            <PropertyRef Name="CoupleSK" />
+          </Key>
+          <Property Name="CoupleSK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FemaleCompetitorFK" Type="int" />
+          <Property Name="MaleCompetitorFK" Type="int" />
+          <Property Name="CoachFK" Type="int" />
+          <Property Name="CountryFK" Type="int" />
+        </EntityType>
+        <EntityType Name="Judge">
+          <Key>
+            <PropertyRef Name="JudgeID" />
+          </Key>
+          <Property Name="JudgeID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="60" />
+          <Property Name="Age" Type="int" />
+          <Property Name="CountryFK" Type="int" />
+        </EntityType>
+        <Association Name="FK_Competition_ToCountry">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="Competition" Type="Self.Competition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="Competition">
+              <PropertyRef Name="CountryFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Competition_ToJudge1">
+          <End Role="Judge" Type="Self.Judge" Multiplicity="0..1" />
+          <End Role="Competition" Type="Self.Competition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Judge">
+              <PropertyRef Name="JudgeID" />
+            </Principal>
+            <Dependent Role="Competition">
+              <PropertyRef Name="JudgeFK1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Competition_ToJudge2">
+          <End Role="Judge" Type="Self.Judge" Multiplicity="0..1" />
+          <End Role="Competition" Type="Self.Competition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Judge">
+              <PropertyRef Name="JudgeID" />
+            </Principal>
+            <Dependent Role="Competition">
+              <PropertyRef Name="JudgeFK2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Competition_ToJudge3">
+          <End Role="Judge" Type="Self.Judge" Multiplicity="0..1" />
+          <End Role="Competition" Type="Self.Competition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Judge">
+              <PropertyRef Name="JudgeID" />
+            </Principal>
+            <Dependent Role="Competition">
+              <PropertyRef Name="JudgeFK3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Competition_ToJudge4">
+          <End Role="Judge" Type="Self.Judge" Multiplicity="0..1" />
+          <End Role="Competition" Type="Self.Competition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Judge">
+              <PropertyRef Name="JudgeID" />
+            </Principal>
+            <Dependent Role="Competition">
+              <PropertyRef Name="JudgeFK4" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Competition_ToJudge5">
+          <End Role="Judge" Type="Self.Judge" Multiplicity="0..1" />
+          <End Role="Competition" Type="Self.Competition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Judge">
+              <PropertyRef Name="JudgeID" />
+            </Principal>
+            <Dependent Role="Competition">
+              <PropertyRef Name="JudgeFK5" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Competitor_ToCountry">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="Competitor" Type="Self.Competitor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="Competitor">
+              <PropertyRef Name="CountryFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Couple_ToCoach">
+          <End Role="Coach" Type="Self.Coach" Multiplicity="0..1" />
+          <End Role="Couple" Type="Self.Couple" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Coach">
+              <PropertyRef Name="CoachID" />
+            </Principal>
+            <Dependent Role="Couple">
+              <PropertyRef Name="CoachFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Couple_ToCompetitor1">
+          <End Role="Competitor" Type="Self.Competitor" Multiplicity="0..1" />
+          <End Role="Couple" Type="Self.Couple" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competitor">
+              <PropertyRef Name="CompetitorID" />
+            </Principal>
+            <Dependent Role="Couple">
+              <PropertyRef Name="FemaleCompetitorFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Couple_ToCompetitor2">
+          <End Role="Competitor" Type="Self.Competitor" Multiplicity="0..1" />
+          <End Role="Couple" Type="Self.Couple" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competitor">
+              <PropertyRef Name="CompetitorID" />
+            </Principal>
+            <Dependent Role="Couple">
+              <PropertyRef Name="MaleCompetitorFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Couple_ToCountry">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="Couple" Type="Self.Couple" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="Couple">
+              <PropertyRef Name="CountryFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Judge_ToCountry">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="Judge" Type="Self.Judge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="Judge">
+              <PropertyRef Name="CountryFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SeasonEvent_ToCompetition">
+          <End Role="Competition" Type="Self.Competition" Multiplicity="0..1" />
+          <End Role="Competition_Couple" Type="Self.Competition_Couple" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competition">
+              <PropertyRef Name="CompetitionID" />
+            </Principal>
+            <Dependent Role="Competition_Couple">
+              <PropertyRef Name="CompetitionFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SeasonEvent_ToCouple">
+          <End Role="Couple" Type="Self.Couple" Multiplicity="0..1" />
+          <End Role="Competition_Couple" Type="Self.Competition_Couple" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Couple">
+              <PropertyRef Name="CoupleSK" />
+            </Principal>
+            <Dependent Role="Competition_Couple">
+              <PropertyRef Name="CoupleFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Database1ModelStoreContainer">
+          <EntitySet Name="Coach" EntityType="Self.Coach" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Competition" EntityType="Self.Competition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Competition_Couple" EntityType="Self.Competition_Couple" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Competitor" EntityType="Self.Competitor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Couple" EntityType="Self.Couple" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Judge" EntityType="Self.Judge" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Competition_ToCountry" Association="Self.FK_Competition_ToCountry">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Competition" EntitySet="Competition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Competition_ToJudge1" Association="Self.FK_Competition_ToJudge1">
+            <End Role="Judge" EntitySet="Judge" />
+            <End Role="Competition" EntitySet="Competition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Competition_ToJudge2" Association="Self.FK_Competition_ToJudge2">
+            <End Role="Judge" EntitySet="Judge" />
+            <End Role="Competition" EntitySet="Competition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Competition_ToJudge3" Association="Self.FK_Competition_ToJudge3">
+            <End Role="Judge" EntitySet="Judge" />
+            <End Role="Competition" EntitySet="Competition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Competition_ToJudge4" Association="Self.FK_Competition_ToJudge4">
+            <End Role="Judge" EntitySet="Judge" />
+            <End Role="Competition" EntitySet="Competition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Competition_ToJudge5" Association="Self.FK_Competition_ToJudge5">
+            <End Role="Judge" EntitySet="Judge" />
+            <End Role="Competition" EntitySet="Competition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Competitor_ToCountry" Association="Self.FK_Competitor_ToCountry">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Competitor" EntitySet="Competitor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Couple_ToCoach" Association="Self.FK_Couple_ToCoach">
+            <End Role="Coach" EntitySet="Coach" />
+            <End Role="Couple" EntitySet="Couple" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Couple_ToCompetitor1" Association="Self.FK_Couple_ToCompetitor1">
+            <End Role="Competitor" EntitySet="Competitor" />
+            <End Role="Couple" EntitySet="Couple" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Couple_ToCompetitor2" Association="Self.FK_Couple_ToCompetitor2">
+            <End Role="Competitor" EntitySet="Competitor" />
+            <End Role="Couple" EntitySet="Couple" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Couple_ToCountry" Association="Self.FK_Couple_ToCountry">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Couple" EntitySet="Couple" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Judge_ToCountry" Association="Self.FK_Judge_ToCountry">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Judge" EntitySet="Judge" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SeasonEvent_ToCompetition" Association="Self.FK_SeasonEvent_ToCompetition">
+            <End Role="Competition" EntitySet="Competition" />
+            <End Role="Competition_Couple" EntitySet="Competition_Couple" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SeasonEvent_ToCouple" Association="Self.FK_SeasonEvent_ToCouple">
+            <End Role="Couple" EntitySet="Couple" />
+            <End Role="Competition_Couple" EntitySet="Competition_Couple" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Database1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Coach">
+          <Key>
+            <PropertyRef Name="CoachID" />
+          </Key>
+          <Property Name="CoachID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="Int32" />
+          <NavigationProperty Name="Couple" Relationship="Self.FK_Couple_ToCoach" FromRole="Coach" ToRole="Couple" />
+        </EntityType>
+        <EntityType Name="Competition">
+          <Key>
+            <PropertyRef Name="CompetitionID" />
+          </Key>
+          <Property Name="CompetitionID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="CountryFK" Type="Int32" />
+          <Property Name="JudgeFK1" Type="Int32" />
+          <Property Name="JudgeFK2" Type="Int32" />
+          <Property Name="JudgeFK3" Type="Int32" />
+          <Property Name="JudgeFK4" Type="Int32" />
+          <Property Name="JudgeFK5" Type="Int32" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_Competition_ToCountry" FromRole="Competition" ToRole="Country" />
+          <NavigationProperty Name="Judge" Relationship="Self.FK_Competition_ToJudge1" FromRole="Competition" ToRole="Judge" />
+          <NavigationProperty Name="Judge1" Relationship="Self.FK_Competition_ToJudge2" FromRole="Competition" ToRole="Judge" />
+          <NavigationProperty Name="Judge2" Relationship="Self.FK_Competition_ToJudge3" FromRole="Competition" ToRole="Judge" />
+          <NavigationProperty Name="Judge3" Relationship="Self.FK_Competition_ToJudge4" FromRole="Competition" ToRole="Judge" />
+          <NavigationProperty Name="Judge4" Relationship="Self.FK_Competition_ToJudge5" FromRole="Competition" ToRole="Judge" />
+          <NavigationProperty Name="Competition_Couple" Relationship="Self.FK_SeasonEvent_ToCompetition" FromRole="Competition" ToRole="Competition_Couple" />
+        </EntityType>
+        <EntityType Name="Competition_Couple">
+          <Key>
+            <PropertyRef Name="SeasonEventSK" />
+          </Key>
+          <Property Name="SeasonEventSK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CoupleFK" Type="Int32" />
+          <Property Name="CompetitionFK" Type="Int32" />
+          <Property Name="Rank" Type="Int32" />
+          <NavigationProperty Name="Competition" Relationship="Self.FK_SeasonEvent_ToCompetition" FromRole="Competition_Couple" ToRole="Competition" />
+          <NavigationProperty Name="Couple" Relationship="Self.FK_SeasonEvent_ToCouple" FromRole="Competition_Couple" ToRole="Couple" />
+        </EntityType>
+        <EntityType Name="Competitor">
+          <Key>
+            <PropertyRef Name="CompetitorID" />
+          </Key>
+          <Property Name="CompetitorID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Height" Type="Int32" />
+          <Property Name="CountryFK" Type="Int32" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_Competitor_ToCountry" FromRole="Competitor" ToRole="Country" />
+          <NavigationProperty Name="Couple" Relationship="Self.FK_Couple_ToCompetitor1" FromRole="Competitor" ToRole="Couple" />
+          <NavigationProperty Name="Couple1" Relationship="Self.FK_Couple_ToCompetitor2" FromRole="Competitor" ToRole="Couple" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Competition" Relationship="Self.FK_Competition_ToCountry" FromRole="Country" ToRole="Competition" />
+          <NavigationProperty Name="Competitor" Relationship="Self.FK_Competitor_ToCountry" FromRole="Country" ToRole="Competitor" />
+          <NavigationProperty Name="Couple" Relationship="Self.FK_Couple_ToCountry" FromRole="Country" ToRole="Couple" />
+          <NavigationProperty Name="Judge" Relationship="Self.FK_Judge_ToCountry" FromRole="Country" ToRole="Judge" />
+        </EntityType>
+        <EntityType Name="Couple">
+          <Key>
+            <PropertyRef Name="CoupleSK" />
+          </Key>
+          <Property Name="CoupleSK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FemaleCompetitorFK" Type="Int32" />
+          <Property Name="MaleCompetitorFK" Type="Int32" />
+          <Property Name="CoachFK" Type="Int32" />
+          <Property Name="CountryFK" Type="Int32" />
+          <NavigationProperty Name="Coach" Relationship="Self.FK_Couple_ToCoach" FromRole="Couple" ToRole="Coach" />
+          <NavigationProperty Name="Competition_Couple" Relationship="Self.FK_SeasonEvent_ToCouple" FromRole="Couple" ToRole="Competition_Couple" />
+          <NavigationProperty Name="Competitor" Relationship="Self.FK_Couple_ToCompetitor1" FromRole="Couple" ToRole="Competitor" />
+          <NavigationProperty Name="Competitor1" Relationship="Self.FK_Couple_ToCompetitor2" FromRole="Couple" ToRole="Competitor" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_Couple_ToCountry" FromRole="Couple" ToRole="Country" />
+        </EntityType>
+        <EntityType Name="Judge">
+          <Key>
+            <PropertyRef Name="JudgeID" />
+          </Key>
+          <Property Name="JudgeID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="CountryFK" Type="Int32" />
+          <NavigationProperty Name="Competition" Relationship="Self.FK_Competition_ToJudge1" FromRole="Judge" ToRole="Competition" />
+          <NavigationProperty Name="Competition1" Relationship="Self.FK_Competition_ToJudge2" FromRole="Judge" ToRole="Competition" />
+          <NavigationProperty Name="Competition2" Relationship="Self.FK_Competition_ToJudge3" FromRole="Judge" ToRole="Competition" />
+          <NavigationProperty Name="Competition3" Relationship="Self.FK_Competition_ToJudge4" FromRole="Judge" ToRole="Competition" />
+          <NavigationProperty Name="Competition4" Relationship="Self.FK_Competition_ToJudge5" FromRole="Judge" ToRole="Competition" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_Judge_ToCountry" FromRole="Judge" ToRole="Country" />
+        </EntityType>
+        <Association Name="FK_Couple_ToCoach">
+          <End Role="Coach" Type="Self.Coach" Multiplicity="0..1" />
+          <End Role="Couple" Type="Self.Couple" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Coach">
+              <PropertyRef Name="CoachID" />
+            </Principal>
+            <Dependent Role="Couple">
+              <PropertyRef Name="CoachFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Competition_ToCountry">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="Competition" Type="Self.Competition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="Competition">
+              <PropertyRef Name="CountryFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Competition_ToJudge1">
+          <End Role="Judge" Type="Self.Judge" Multiplicity="0..1" />
+          <End Role="Competition" Type="Self.Competition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Judge">
+              <PropertyRef Name="JudgeID" />
+            </Principal>
+            <Dependent Role="Competition">
+              <PropertyRef Name="JudgeFK1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Competition_ToJudge2">
+          <End Role="Judge" Type="Self.Judge" Multiplicity="0..1" />
+          <End Role="Competition" Type="Self.Competition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Judge">
+              <PropertyRef Name="JudgeID" />
+            </Principal>
+            <Dependent Role="Competition">
+              <PropertyRef Name="JudgeFK2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Competition_ToJudge3">
+          <End Role="Judge" Type="Self.Judge" Multiplicity="0..1" />
+          <End Role="Competition" Type="Self.Competition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Judge">
+              <PropertyRef Name="JudgeID" />
+            </Principal>
+            <Dependent Role="Competition">
+              <PropertyRef Name="JudgeFK3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Competition_ToJudge4">
+          <End Role="Judge" Type="Self.Judge" Multiplicity="0..1" />
+          <End Role="Competition" Type="Self.Competition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Judge">
+              <PropertyRef Name="JudgeID" />
+            </Principal>
+            <Dependent Role="Competition">
+              <PropertyRef Name="JudgeFK4" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Competition_ToJudge5">
+          <End Role="Judge" Type="Self.Judge" Multiplicity="0..1" />
+          <End Role="Competition" Type="Self.Competition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Judge">
+              <PropertyRef Name="JudgeID" />
+            </Principal>
+            <Dependent Role="Competition">
+              <PropertyRef Name="JudgeFK5" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SeasonEvent_ToCompetition">
+          <End Role="Competition" Type="Self.Competition" Multiplicity="0..1" />
+          <End Role="Competition_Couple" Type="Self.Competition_Couple" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competition">
+              <PropertyRef Name="CompetitionID" />
+            </Principal>
+            <Dependent Role="Competition_Couple">
+              <PropertyRef Name="CompetitionFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SeasonEvent_ToCouple">
+          <End Role="Couple" Type="Self.Couple" Multiplicity="0..1" />
+          <End Role="Competition_Couple" Type="Self.Competition_Couple" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Couple">
+              <PropertyRef Name="CoupleSK" />
+            </Principal>
+            <Dependent Role="Competition_Couple">
+              <PropertyRef Name="CoupleFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Competitor_ToCountry">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="Competitor" Type="Self.Competitor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="Competitor">
+              <PropertyRef Name="CountryFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Couple_ToCompetitor1">
+          <End Role="Competitor" Type="Self.Competitor" Multiplicity="0..1" />
+          <End Role="Couple" Type="Self.Couple" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competitor">
+              <PropertyRef Name="CompetitorID" />
+            </Principal>
+            <Dependent Role="Couple">
+              <PropertyRef Name="FemaleCompetitorFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Couple_ToCompetitor2">
+          <End Role="Competitor" Type="Self.Competitor" Multiplicity="0..1" />
+          <End Role="Couple" Type="Self.Couple" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competitor">
+              <PropertyRef Name="CompetitorID" />
+            </Principal>
+            <Dependent Role="Couple">
+              <PropertyRef Name="MaleCompetitorFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Couple_ToCountry">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="Couple" Type="Self.Couple" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="Couple">
+              <PropertyRef Name="CountryFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Judge_ToCountry">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="Judge" Type="Self.Judge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="Judge">
+              <PropertyRef Name="CountryFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Database1Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Coach" EntityType="Self.Coach" />
+          <EntitySet Name="Competition" EntityType="Self.Competition" />
+          <EntitySet Name="Competition_Couple" EntityType="Self.Competition_Couple" />
+          <EntitySet Name="Competitor" EntityType="Self.Competitor" />
+          <EntitySet Name="Country" EntityType="Self.Country" />
+          <EntitySet Name="Couple" EntityType="Self.Couple" />
+          <EntitySet Name="Judge" EntityType="Self.Judge" />
+          <AssociationSet Name="FK_Couple_ToCoach" Association="Self.FK_Couple_ToCoach">
+            <End Role="Coach" EntitySet="Coach" />
+            <End Role="Couple" EntitySet="Couple" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Competition_ToCountry" Association="Self.FK_Competition_ToCountry">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Competition" EntitySet="Competition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Competition_ToJudge1" Association="Self.FK_Competition_ToJudge1">
+            <End Role="Judge" EntitySet="Judge" />
+            <End Role="Competition" EntitySet="Competition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Competition_ToJudge2" Association="Self.FK_Competition_ToJudge2">
+            <End Role="Judge" EntitySet="Judge" />
+            <End Role="Competition" EntitySet="Competition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Competition_ToJudge3" Association="Self.FK_Competition_ToJudge3">
+            <End Role="Judge" EntitySet="Judge" />
+            <End Role="Competition" EntitySet="Competition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Competition_ToJudge4" Association="Self.FK_Competition_ToJudge4">
+            <End Role="Judge" EntitySet="Judge" />
+            <End Role="Competition" EntitySet="Competition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Competition_ToJudge5" Association="Self.FK_Competition_ToJudge5">
+            <End Role="Judge" EntitySet="Judge" />
+            <End Role="Competition" EntitySet="Competition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SeasonEvent_ToCompetition" Association="Self.FK_SeasonEvent_ToCompetition">
+            <End Role="Competition" EntitySet="Competition" />
+            <End Role="Competition_Couple" EntitySet="Competition_Couple" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SeasonEvent_ToCouple" Association="Self.FK_SeasonEvent_ToCouple">
+            <End Role="Couple" EntitySet="Couple" />
+            <End Role="Competition_Couple" EntitySet="Competition_Couple" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Competitor_ToCountry" Association="Self.FK_Competitor_ToCountry">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Competitor" EntitySet="Competitor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Couple_ToCompetitor1" Association="Self.FK_Couple_ToCompetitor1">
+            <End Role="Competitor" EntitySet="Competitor" />
+            <End Role="Couple" EntitySet="Couple" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Couple_ToCompetitor2" Association="Self.FK_Couple_ToCompetitor2">
+            <End Role="Competitor" EntitySet="Competitor" />
+            <End Role="Couple" EntitySet="Couple" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Couple_ToCountry" Association="Self.FK_Couple_ToCountry">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Couple" EntitySet="Couple" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Judge_ToCountry" Association="Self.FK_Judge_ToCountry">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Judge" EntitySet="Judge" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="Database1Entities">
+          <EntitySetMapping Name="Coach">
+            <EntityTypeMapping TypeName="Database1Model.Coach">
+              <MappingFragment StoreEntitySet="Coach">
+                <ScalarProperty Name="CoachID" ColumnName="CoachID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Competition">
+            <EntityTypeMapping TypeName="Database1Model.Competition">
+              <MappingFragment StoreEntitySet="Competition">
+                <ScalarProperty Name="CompetitionID" ColumnName="CompetitionID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="CountryFK" ColumnName="CountryFK" />
+                <ScalarProperty Name="JudgeFK1" ColumnName="JudgeFK1" />
+                <ScalarProperty Name="JudgeFK2" ColumnName="JudgeFK2" />
+                <ScalarProperty Name="JudgeFK3" ColumnName="JudgeFK3" />
+                <ScalarProperty Name="JudgeFK4" ColumnName="JudgeFK4" />
+                <ScalarProperty Name="JudgeFK5" ColumnName="JudgeFK5" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Competition_Couple">
+            <EntityTypeMapping TypeName="Database1Model.Competition_Couple">
+              <MappingFragment StoreEntitySet="Competition_Couple">
+                <ScalarProperty Name="SeasonEventSK" ColumnName="SeasonEventSK" />
+                <ScalarProperty Name="CoupleFK" ColumnName="CoupleFK" />
+                <ScalarProperty Name="CompetitionFK" ColumnName="CompetitionFK" />
+                <ScalarProperty Name="Rank" ColumnName="Rank" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Competitor">
+            <EntityTypeMapping TypeName="Database1Model.Competitor">
+              <MappingFragment StoreEntitySet="Competitor">
+                <ScalarProperty Name="CompetitorID" ColumnName="CompetitorID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="CountryFK" ColumnName="CountryFK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Country">
+            <EntityTypeMapping TypeName="Database1Model.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Couple">
+            <EntityTypeMapping TypeName="Database1Model.Couple">
+              <MappingFragment StoreEntitySet="Couple">
+                <ScalarProperty Name="CoupleSK" ColumnName="CoupleSK" />
+                <ScalarProperty Name="FemaleCompetitorFK" ColumnName="FemaleCompetitorFK" />
+                <ScalarProperty Name="MaleCompetitorFK" ColumnName="MaleCompetitorFK" />
+                <ScalarProperty Name="CoachFK" ColumnName="CoachFK" />
+                <ScalarProperty Name="CountryFK" ColumnName="CountryFK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Judge">
+            <EntityTypeMapping TypeName="Database1Model.Judge">
+              <MappingFragment StoreEntitySet="Judge">
+                <ScalarProperty Name="JudgeID" ColumnName="JudgeID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="CountryFK" ColumnName="CountryFK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
