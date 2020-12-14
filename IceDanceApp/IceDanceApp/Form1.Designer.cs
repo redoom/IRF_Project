@@ -39,10 +39,10 @@
             this.buttonManageCompetition = new System.Windows.Forms.Button();
             this.buttonAddCountry = new System.Windows.Forms.Button();
             this.rankingDataGridView = new System.Windows.Forms.DataGridView();
+            this.buttonCreateExcel = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rankingBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.buttonCreateExcel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.rankingDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rankingBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -165,6 +165,19 @@
             this.rankingDataGridView.Size = new System.Drawing.Size(365, 313);
             this.rankingDataGridView.TabIndex = 11;
             // 
+            // buttonCreateExcel
+            // 
+            this.buttonCreateExcel.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.buttonCreateExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonCreateExcel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.buttonCreateExcel.Location = new System.Drawing.Point(41, 436);
+            this.buttonCreateExcel.Name = "buttonCreateExcel";
+            this.buttonCreateExcel.Size = new System.Drawing.Size(365, 73);
+            this.buttonCreateExcel.TabIndex = 12;
+            this.buttonCreateExcel.Text = "Create Excel";
+            this.buttonCreateExcel.UseVisualStyleBackColor = false;
+            this.buttonCreateExcel.Click += new System.EventHandler(this.buttonCreateExcel_Click);
+            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "Name";
@@ -183,25 +196,12 @@
             // 
             this.rankingBindingSource.DataSource = typeof(IceDanceApp.Ranking);
             // 
-            // buttonCreateExcel
-            // 
-            this.buttonCreateExcel.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.buttonCreateExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonCreateExcel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonCreateExcel.Location = new System.Drawing.Point(41, 436);
-            this.buttonCreateExcel.Name = "buttonCreateExcel";
-            this.buttonCreateExcel.Size = new System.Drawing.Size(365, 73);
-            this.buttonCreateExcel.TabIndex = 12;
-            this.buttonCreateExcel.Text = "Create Excel";
-            this.buttonCreateExcel.UseVisualStyleBackColor = false;
-            this.buttonCreateExcel.Click += new System.EventHandler(this.buttonCreateExcel_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(796, 540);
+            this.ClientSize = new System.Drawing.Size(796, 650);
             this.Controls.Add(this.buttonCreateExcel);
             this.Controls.Add(this.rankingDataGridView);
             this.Controls.Add(this.buttonAddCountry);

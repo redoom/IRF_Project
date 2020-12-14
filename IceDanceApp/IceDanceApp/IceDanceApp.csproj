@@ -88,6 +88,10 @@
     <Compile Include="Couple.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Skate.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Entities\SkateFactory.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
