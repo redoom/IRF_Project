@@ -14,7 +14,7 @@ namespace IceDanceApp
     {
         Database1Entities context = new Database1Entities();
         public UserControlManageCompetition()
-        {
+        {   
             InitializeComponent();
             coupleListing();
             competitionListing();

@@ -120,14 +120,10 @@ namespace IceDanceApp
 
         private void buttonCreateExcel_Click(object sender, EventArgs e)
         {
-
-            // Excel elindítása és az applikáció objektum betöltése
             xlApp = new Excel.Application();
 
-            // Új munkafüzet
             xlWB = xlApp.Workbooks.Add(Missing.Value);
 
-            // Új munkalap
             xlSheet = xlWB.ActiveSheet;
 
             string[] headers = new string[] {
