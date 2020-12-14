@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IceDanceApp.Entities
 {
-    class SkateFactory
+    public class SkateFactory
     {
         public Skate CreateNew()
         {

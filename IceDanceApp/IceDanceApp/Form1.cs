@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
+using IceDanceApp.Entities;
 
 
 namespace IceDanceApp
@@ -16,6 +17,15 @@ namespace IceDanceApp
     public partial class Form1 : Form
     {
         Database1Entities context = new Database1Entities();
+
+        private List<Skate> _skate = new List<Skate>();
+
+        private SkateFactory _factory;
+        public SkateFactory Factory
+        {
+            get { return _factory; }
+            set { _factory = value; }
+        }
 
         List<Ranking> Ranking = new List<Ranking>();
 
@@ -27,6 +37,7 @@ namespace IceDanceApp
         {
             InitializeComponent();
             coupleRankList();
+            Factory = new SkateFactory();
         }
 
         private void coupleRankList()
@@ -161,6 +172,33 @@ namespace IceDanceApp
             ExcelCoordinate += x.ToString();
 
             return ExcelCoordinate;
+        }
+
+        private void createTimer_Tick(object sender, EventArgs e)
+        {
+            var skate = Factory.CreateNew();
+            _skate.Add(skate);
+            skate.Left = -skate.Width;
+            skatePanel.Controls.Add(skate);
+        }
+
+        private void conveyorTimer_Tick(object sender, EventArgs e)
+        {
+            var maxPosition = 0;
+            foreach (var skate in _skate)
+            {
+                skate.MoveSkate();
+                if (skate.Left > maxPosition)
+                    maxPosition = skate.Left;
+            }
+
+            if (maxPosition > 1000)
+            {
+                var oldestSkate = _skate[0];
+                skatePanel.Controls.Remove(oldestSkate);
+                _skate.Remove(oldestSkate);
+            }
+
         }
     }
 }
