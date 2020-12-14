@@ -165,7 +165,7 @@
             this.rankingDataGridView.Name = "rankingDataGridView";
             this.rankingDataGridView.RowHeadersWidth = 51;
             this.rankingDataGridView.RowTemplate.Height = 24;
-            this.rankingDataGridView.Size = new System.Drawing.Size(365, 313);
+            this.rankingDataGridView.Size = new System.Drawing.Size(365, 292);
             this.rankingDataGridView.TabIndex = 11;
             // 
             // buttonCreateExcel
@@ -173,11 +173,11 @@
             this.buttonCreateExcel.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.buttonCreateExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonCreateExcel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonCreateExcel.Location = new System.Drawing.Point(41, 436);
+            this.buttonCreateExcel.Location = new System.Drawing.Point(41, 405);
             this.buttonCreateExcel.Name = "buttonCreateExcel";
-            this.buttonCreateExcel.Size = new System.Drawing.Size(365, 73);
+            this.buttonCreateExcel.Size = new System.Drawing.Size(365, 104);
             this.buttonCreateExcel.TabIndex = 12;
-            this.buttonCreateExcel.Text = "Create Excel";
+            this.buttonCreateExcel.Text = "Create Excel Ranking";
             this.buttonCreateExcel.UseVisualStyleBackColor = false;
             this.buttonCreateExcel.Click += new System.EventHandler(this.buttonCreateExcel_Click);
             // 

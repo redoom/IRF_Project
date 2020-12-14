@@ -33,7 +33,7 @@ namespace IceDanceApp
         Excel.Workbook xlWB;
         Excel.Worksheet xlSheet;
 
-        public Form1()
+        public Form1() 
         {
             InitializeComponent();
             coupleRankList();
@@ -131,6 +131,7 @@ namespace IceDanceApp
             xlSheet = xlWB.ActiveSheet;
 
             string[] headers = new string[] {
+            "Ranking",
             "Name",
             "Point",
             };
@@ -145,12 +146,53 @@ namespace IceDanceApp
             int counter = 0;
             foreach (Ranking x in Ranking)
             {
-                values[counter, 0] = x.Name;
-                values[counter, 1] = x.Point;
+                values[counter, 0] = counter + 1;
+                values[counter, 1] = x.Name;
+                values[counter, 2] = x.Point;
                 counter++;
             }
 
             xlSheet.get_Range(GetCell(2, 1), GetCell(1 + values.GetLength(0), values.GetLength(1))).Value2 = values;
+
+            xlSheet.get_Range(GetCell(1, 1), GetCell(1, 1)).ColumnWidth = 7;
+            xlSheet.get_Range(GetCell(1, 2), GetCell(1, 2)).ColumnWidth = 15;
+            xlSheet.get_Range(GetCell(1, 3), GetCell(1, 3)).ColumnWidth = 7;
+
+            Excel.Range headerRange = xlSheet.get_Range(GetCell(1, 1), GetCell(1, headers.Length));
+            headerRange.Font.Bold = true;
+            headerRange.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+            headerRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+            headerRange.RowHeight = 40;
+            headerRange.Interior.Color = Color.FromArgb(180, 207, 250);
+            headerRange.BorderAround2(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlThick);
+
+            Excel.Range goldRange = xlSheet.get_Range(GetCell(2, 1), GetCell(2, headers.Length));
+            goldRange.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+            goldRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+            goldRange.RowHeight = 30;
+            goldRange.Interior.Color = Color.Gold;
+            goldRange.BorderAround2(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlThick);
+
+            Excel.Range silverRange = xlSheet.get_Range(GetCell(3, 1), GetCell(3, headers.Length));
+            silverRange.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+            silverRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+            silverRange.RowHeight = 30;
+            silverRange.Interior.Color = Color.Silver;
+            silverRange.BorderAround2(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlThick);
+
+            Excel.Range bronzRange = xlSheet.get_Range(GetCell(4, 1), GetCell(4, headers.Length));
+            bronzRange.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+            bronzRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+            bronzRange.RowHeight = 30;
+            bronzRange.Interior.Color = Color.FromArgb(205, 127, 50);
+            bronzRange.BorderAround2(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlThick);
+
+            Excel.Range bodyRange = xlSheet.get_Range(GetCell(5, 1), GetCell(counter+1, headers.Length));
+            bodyRange.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+            bodyRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter; 
+            bodyRange.RowHeight = 30;
+            bodyRange.BorderAround2(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlThick);
+
 
             xlApp.Visible = true;
             xlApp.UserControl = true;
