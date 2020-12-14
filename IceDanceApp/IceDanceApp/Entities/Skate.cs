@@ -13,7 +13,7 @@ namespace IceDanceApp.Entities
         public Skate()
         {
             AutoSize = false;
-            Width = 50;
+            Width = 65;
             Height = Width;
             Paint += Skate_Paint;
         }
@@ -25,7 +25,8 @@ namespace IceDanceApp.Entities
 
         protected void DrawImage(Graphics g)
         {
-            g.FillEllipse(new SolidBrush(Color.Blue), 0, 0, Width, Height);
+            Image imageFile = Image.FromFile("Images/skate.png");
+            g.DrawImage(imageFile, new Rectangle(0, 0, Width, Height));
         }
 
         public void MoveSkate()

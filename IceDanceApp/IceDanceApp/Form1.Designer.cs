@@ -40,12 +40,12 @@
             this.buttonAddCountry = new System.Windows.Forms.Button();
             this.rankingDataGridView = new System.Windows.Forms.DataGridView();
             this.buttonCreateExcel = new System.Windows.Forms.Button();
+            this.createTimer = new System.Windows.Forms.Timer(this.components);
+            this.conveyorTimer = new System.Windows.Forms.Timer(this.components);
+            this.skatePanel = new System.Windows.Forms.Panel();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rankingBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.skatePanel = new System.Windows.Forms.Panel();
-            this.createTimer = new System.Windows.Forms.Timer(this.components);
-            this.conveyorTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.rankingDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rankingBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -181,6 +181,29 @@
             this.buttonCreateExcel.UseVisualStyleBackColor = false;
             this.buttonCreateExcel.Click += new System.EventHandler(this.buttonCreateExcel_Click);
             // 
+            // createTimer
+            // 
+            this.createTimer.Enabled = true;
+            this.createTimer.Interval = 5000;
+            this.createTimer.Tick += new System.EventHandler(this.createTimer_Tick);
+            // 
+            // conveyorTimer
+            // 
+            this.conveyorTimer.Enabled = true;
+            this.conveyorTimer.Interval = 3;
+            this.conveyorTimer.Tick += new System.EventHandler(this.conveyorTimer_Tick);
+            // 
+            // skatePanel
+            // 
+            this.skatePanel.BackColor = System.Drawing.Color.Transparent;
+            this.skatePanel.BackgroundImage = global::IceDanceApp.Properties.Resources.ice1;
+            this.skatePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.skatePanel.ForeColor = System.Drawing.Color.Transparent;
+            this.skatePanel.Location = new System.Drawing.Point(41, 536);
+            this.skatePanel.Name = "skatePanel";
+            this.skatePanel.Size = new System.Drawing.Size(713, 108);
+            this.skatePanel.TabIndex = 13;
+            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "Name";
@@ -199,31 +222,12 @@
             // 
             this.rankingBindingSource.DataSource = typeof(IceDanceApp.Ranking);
             // 
-            // skatePanel
-            // 
-            this.skatePanel.Location = new System.Drawing.Point(41, 538);
-            this.skatePanel.Name = "skatePanel";
-            this.skatePanel.Size = new System.Drawing.Size(713, 100);
-            this.skatePanel.TabIndex = 13;
-            // 
-            // createTimer
-            // 
-            this.createTimer.Enabled = true;
-            this.createTimer.Interval = 3000;
-            this.createTimer.Tick += new System.EventHandler(this.createTimer_Tick);
-            // 
-            // conveyorTimer
-            // 
-            this.conveyorTimer.Enabled = true;
-            this.conveyorTimer.Interval = 10;
-            this.conveyorTimer.Tick += new System.EventHandler(this.conveyorTimer_Tick);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(796, 650);
+            this.ClientSize = new System.Drawing.Size(796, 676);
             this.Controls.Add(this.skatePanel);
             this.Controls.Add(this.buttonCreateExcel);
             this.Controls.Add(this.rankingDataGridView);
