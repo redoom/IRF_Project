@@ -243,7 +243,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Main Page";
             ((System.ComponentModel.ISupportInitialize)(this.rankingDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rankingBindingSource)).EndInit();
             this.ResumeLayout(false);

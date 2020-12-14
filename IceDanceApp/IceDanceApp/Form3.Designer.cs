@@ -48,7 +48,7 @@
             this.ClientSize = new System.Drawing.Size(1064, 522);
             this.Controls.Add(this.panel1);
             this.Name = "Form3";
-            this.Text = "Form3";
+            this.Text = "Conpetition Management";
             this.ResumeLayout(false);
 
         }
